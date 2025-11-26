@@ -16,8 +16,8 @@ public class Product
     public required string Title { get; set; }
     [Required]
     [DataType(DataType.Currency)]
-    [RegularExpression(@"\.", 
-        ErrorMessage = "Use only comma")]
+    // [RegularExpression(@"\.", 
+    //     ErrorMessage = "Use only comma")]
     public required decimal Price { get; set; }
 
     public ICollection<Order>? Order { get; set; } 

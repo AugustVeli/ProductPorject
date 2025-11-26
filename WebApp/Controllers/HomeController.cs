@@ -86,12 +86,10 @@ namespace WebApp.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var client = await _context.Clients.FindAsync(id);
-            // var orders = await _context.Orders.FindAsync(id);
             var orders = _context.Orders.Where(o => o.ClientId  == id);
 
             if (client != null)
             {
-                // client.Orders.Clear();
                 foreach (var order in orders)
                 {
                     client.Orders.Remove(order);

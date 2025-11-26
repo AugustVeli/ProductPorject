@@ -73,6 +73,7 @@ namespace WebApp.Controllers
         public async Task<IActionResult> Delete(int id)
         {
                 var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
+                var orders = _context.Orders.Where(o => o.ProductId  == id);
                 return View(product);
         }
         
@@ -80,8 +81,14 @@ namespace WebApp.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var product = await _context.Products.FindAsync(id);
+            var orders = _context.Orders.Where(o => o.ProductId  == id);
+            
             if (product != null)
             {
+                foreach (var order in orders)
+                {
+                    product.Order.Remove(order);
+                }
                 _context.Products.Remove(product);
                 await _context.SaveChangesAsync();
             } 
