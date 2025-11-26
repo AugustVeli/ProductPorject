@@ -61,11 +61,10 @@ namespace WebApp.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             var client = await _context.Clients.FindAsync(id);
-            client.Birthdate = client.Birthdate.Date;
             return View(client);
         }
         [HttpPost, ActionName("Edit")]
-        public async Task<IActionResult> Edit(int id, [Bind("Name, Email, Birthdate, Gender")] Client client)
+        public async Task<IActionResult> Edit(int id, [Bind("Id, Name, Email, Birthdate, Gender")] Client client)
         {
             if (ModelState.IsValid)
             {
