@@ -1,0 +1,14 @@
+@model WebApp.Models.Order
+@{
+    ViewData["Title"] = "Delete Order"; 
+}
+
+<h3>Are you sure you want to delete this Order?</h3>
+
+<p>id: @Model.Id</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id"/>
+    <input type="submit" class="btn btn-danger" value="Delete"/>
+</form>
+

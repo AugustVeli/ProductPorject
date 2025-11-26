@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "List of Clients";
+}
+<div>
+    <div><a asp-action="Create">Add Client</a></div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Birthdate</th>
+            <th>Genders</th>
+            <th>Number of orders</th>
+            <th>Average order amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var client in ViewBag.ClientsData)
+        {
+            <tr>
+                <td>@client.Name</td>
+                <td>@client.Email</td>
+                <td>@client.Birthdate.ToString("dd/MM/yyyy")</td>
+                <td>@client.Gender</td>
+                <td>@client?.Number_of_orders</td>
+                <td>@client?.Average_order_amount</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@client.Id">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@client.Id">Delete</a>
+                </td>
+            </tr>
+           
+        }
+        </tbody>
+    </table>
+</div>

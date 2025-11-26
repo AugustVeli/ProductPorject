@@ -1,0 +1,36 @@
+@model WebApp.Models.Product
+@{
+    ViewData["Title"] = "Form for products";
+}
+<h1>@ViewData["Title"]</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <a class="link-dark" asp-action="Index">Go to MainPage</a>
+    </div>
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id"/>
+            <div class="form-group">
+                <label asp-for="Code" class="control-label">Code</label>
+                <input type="text" class="form-control" asp-for="Code"/>
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">Title</label>
+                <input type="text" class="form-control" asp-for="Title"/>
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label">Price</label>
+                <input  class="form-control" asp-for="Price" asp-is-invariant="true"/>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="submit" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
