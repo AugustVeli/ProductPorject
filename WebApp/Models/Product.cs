@@ -19,6 +19,5 @@ public class Product
     // [RegularExpression(@"\.", 
     //     ErrorMessage = "Use only comma")]
     public required decimal Price { get; set; }
-
-    public ICollection<Order>? Order { get; set; } 
+    
 }
