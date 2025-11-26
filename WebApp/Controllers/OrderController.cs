@@ -73,7 +73,7 @@ public class OrderController : Controller
         return View(order);
     }
     [HttpPost, ActionName("Edit")]
-    public async Task<IActionResult> Edit(int id, [Bind("Quantity, Status, ProductId, ClientId")] Order order)
+    public async Task<IActionResult> Edit(int id, [Bind("Id, Quantity, Status, ProductId, ClientId")] Order order)
     {
         if (ModelState.IsValid)
         {

@@ -1,6 +1,6 @@
 @model WebApp.Models.Order
 @{
-    ViewData["Title"] = "Edit for clients";
+    ViewData["Title"] = "Edit for Orders";
 }
 <h1>@ViewData["Title"]</h1>
 <hr />
@@ -10,8 +10,9 @@
         <a class="link-dark" asp-action="Index">Go to MainPage</a>
     </div>
     <div class="col-md-4">
-        <form asp-action="Create" method="post">
+        <form asp-action="Edit" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id"/>
             <div class="form-group">
                 <label asp-for="ClientId" class="control-label">Client</label>
                 <select asp-for="ClientId" asp-items="ViewBag.Clients" class="form-control">
