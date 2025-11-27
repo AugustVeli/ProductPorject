@@ -1,5 +1,15 @@
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Data;
+
+var defaultCulture = new CultureInfo("es-US");
+var localizationOptions = new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture(defaultCulture),
+    SupportedCultures = new List<CultureInfo> { defaultCulture },
+    SupportedUICultures = new List<CultureInfo> { defaultCulture }
+};
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +23,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
+
+app.UseRequestLocalization(localizationOptions);
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
