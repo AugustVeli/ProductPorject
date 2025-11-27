@@ -25,6 +25,7 @@ public class OrderController : Controller
         var products = await _context.Orders.Select(o=> new
         {
             Id = o.Id,
+            Client = o.Client.Name,
             Product_name = o.Product.Title,
             Quantity = o.Quantity,
             Order_amount = o.Quantity * o.Product.Price,
