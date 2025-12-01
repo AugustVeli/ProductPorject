@@ -27,7 +27,7 @@ namespace WebApp.Controllers
                     Birthdate = client.Birthdate,
                     Gender = client.Gender,
                     Number_of_orders = client.Orders.Count(),
-                    Average_order_amount = client.Orders.Count() == 0 ? 0 : _context.Orders.Where(o => o.ClientId == client.Id).Average(o =>o.Quantity * o.Product.Price),
+                    Average_order_amount = client.Orders.Count() == 0 ? 0 : client.Orders.Average(o =>o.Quantity * o.Product.Price)
                 }
                     
                 ).ToListAsync();
